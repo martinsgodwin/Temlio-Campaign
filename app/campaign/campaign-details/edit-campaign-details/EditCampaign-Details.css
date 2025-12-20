@@ -1,0 +1,297 @@
+.campaign-details-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.campaign-header {
+    margin-bottom: 40px;
+}
+
+.campaign-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 8px 0;
+}
+
+.campaign-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.campaign-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+/* Sender ID Section */
+.sender-id-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.select-wrapper {
+    flex: 1;
+}
+
+.sender-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.sender-select:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.change-id-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.change-id-btn:hover {
+    background-color: #0052a3;
+}
+
+/* Recipients Section */
+.create-group-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #0066cc;
+    border: 1px solid #0066cc;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.create-group-btn:hover {
+    background-color: #f0f7ff;
+}
+
+.recipients-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-family: inherit;
+    resize: vertical;
+    background-color: #fafafa;
+}
+
+.recipients-textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    background-color: #ffffff;
+}
+
+.recipients-textarea::placeholder {
+    color: #9ca3af;
+}
+
+/* Upload Contacts Section */
+.upload-file-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background-color: #fafafa;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-icon {
+    color: #6b7280;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.file-time {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.file-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.delete-file-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.delete-icon {
+    font-size: 18px;
+    color: #ef4444;
+    line-height: 1;
+}
+
+.delete-file-btn:hover {
+    background-color: #fef2f2;
+    border-color: #ef4444;
+}
+
+.file-size {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.file-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.2s;
+}
+
+.file-menu-btn:hover {
+    color: #1a1a1a;
+}
+
+.upload-new-btn {
+    align-self: flex-start;
+    padding: 10px 24px;
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.upload-new-btn:hover {
+    background-color: #0052a3;
+}
+
+/* Compose Content Section */
+.compose-textarea {
+    width: 100%;
+    min-height: 140px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #1a1a1a;
+    font-family: inherit;
+    resize: vertical;
+    background-color: #fafafa;
+    line-height: 1.6;
+}
+
+.compose-textarea:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    background-color: #ffffff;
+}
+
+.character-count {
+    text-align: right;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* Update Button */
+.update-btn {
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto 0;
+    padding: 14px 24px;
+    background-color: #0066cc;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.update-btn:hover {
+    background-color: #0052a3;
+}

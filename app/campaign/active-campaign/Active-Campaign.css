@@ -1,0 +1,441 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.sidebar-panel {
+    width: 188px;
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px 20px;
+    height: 60px;
+    gap: 0;
+    line-height: 1;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.logo-text {
+    color: #0072BC;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.logo-subtext {
+    color: #555;
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+
+.dashboard-sidebar {
+    padding: 20px 0;
+    flex-grow: 1;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    color: #333;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-item:hover {
+    background-color: #f1f3f4;
+}
+
+.nav-item.active {
+    background-color: #e0f0ff;
+    color: #F37732;
+    border-left: 3px solid #F37732;
+    padding-left: 17px;
+    font-weight: bold;
+}
+
+.nav-item.active .icon {
+    color: #F37732;
+}
+
+.icon {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.main-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-nav {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 5px 10px;
+    background-color: #f1f3f4;
+    width: 350px;
+}
+
+.search-nav .icon {
+    color: #999;
+}
+
+.search-nav input {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0 10px;
+    flex-grow: 1;
+    font-size: 0.9rem;
+}
+
+.search-secondary-btn {
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 3px 6px;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+.search-menu-btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 2px 4px;
+    line-height: 1;
+    margin-left: 5px;
+    color: #999;
+    transition: all 0.2s ease;
+}
+
+.search-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #666;
+}
+
+.search-menu-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.profile-details-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.user-email {
+    font-size: 0.7rem;
+    color: #777;
+    font-weight: 400;
+}
+
+.user-dropdown-btn {
+    background: #f1f3f4;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #ccc;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.credit-action-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 15px;
+    border-left: 1px solid #eee;
+}
+
+.user-credit {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    line-height: 1.2;
+}
+
+.credit-label {
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #777;
+}
+
+.credit-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.topup-btn {
+    background-color: #F37732;
+    color: white;
+    border: none;
+    height: 35px;
+    width: 64px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.dashboard-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #f8f9fa;
+}
+
+/* Active Campaign Specific Styles */
+.active-campaign-container {
+    max-width: 100%;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-title-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-icon {
+    color: black;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.campaign-search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    width: 280px;
+}
+
+.campaign-search-box svg {
+    color: #999;
+    margin-right: 8px;
+}
+
+.campaign-search-box input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.campaign-search-box input::placeholder {
+    color: #999;
+}
+
+.filter-btn {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f8f9fa;
+}
+
+.filter-btn svg {
+    color: #F37732;
+}
+
+.view-all-btn {
+    background-color: #F37732;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 24px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.view-all-btn:hover {
+    background-color: #d86829;
+}
+
+/* Campaign Table */
+.campaign-table-container {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.campaign-table {
+    width: 100%;
+    border-collapse: collapse;
+    cursor: pointer;
+}
+
+.campaign-table thead {
+    background-color: #fafafa;
+    /* cursor: pointer; */
+}
+
+.campaign-table th {
+    padding: 16px 20px;
+    text-align: left;
+    color: #666;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #e8e8e8;
+    /* cursor: pointer; */
+}
+
+.campaign-table td {
+    padding: 18px 20px;
+    text-align: left;
+    color: #333;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.campaign-table tbody tr {
+    background-color: white;
+    transition: background-color 0.2s ease;
+}
+
+.campaign-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.campaign-table .col-checkbox {
+    width: 50px;
+    text-align: center;
+}
+
+.campaign-table .col-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: black;
+}
+
+.campaign-table .campaign-id {
+    color: black;
+    font-weight: 500;
+}
+
+.campaign-table .amount {
+    font-weight: 500;
+}
+
+.campaign-table .progress {
+    color: #666;
+}
+
+.campaign-table .date {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.campaign-table .col-menu {
+    width: 50px;
+    text-align: center;
+}
+
+.table-menu-icon {
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.table-menu-icon:hover {
+    color: #333;
+}

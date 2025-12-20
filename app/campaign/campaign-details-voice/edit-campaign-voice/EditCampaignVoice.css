@@ -1,0 +1,246 @@
+.edit-campaign-layout {
+    width: 100%;
+    padding: 20px 40px;
+}
+
+/* Header & Tabs Alignment */
+.campaign-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.title-section h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    color: #000;
+}
+.title-section p {
+    font-size: 14px;
+    color: #1e1e1e;
+    margin-top: 6px;
+}
+
+.setup-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.setup-tab {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #444;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+}
+
+.setup-tab.active {
+    background: #0076be;
+    color: white;
+    border-color: #0076be;
+}
+
+.tab-arrow {
+    color: #ccc;
+    font-size: 18px;
+}
+
+/* Form Container Styling */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 16px;
+    border: 1.5px solid #ff8a3d;
+    border-radius: 12px;
+    background: transparent;
+    font-size: 15px;
+}
+/* Update the record section styles */
+.record-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.record-btn {
+    background: #0076be;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-weight: 400;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.record-btn:hover {
+    background: #005d9a;
+}
+
+.audio-timeline {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.timeline-dots {
+    flex-grow: 1;
+    height: 0;
+    border-top: 2px dotted #1e1d1d; 
+}
+
+.audio-duration {
+    font-size: 14px;
+    color: #333;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Update the upload section styles */
+.upload-section {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.uploaded-file {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.file-info-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.file-icon-box {
+    background: #000;
+    color: #fff;
+    padding: 8px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.file-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.file-name {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.file-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.file-info-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: black;
+}
+
+.refresh-icon {
+    color: #ff4d4d;
+    width: 16px;
+}
+
+.file-size-badge {
+    font-size: 12px;
+    background: #f1f1f1;
+    padding: 2px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.file-menu-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.file-menu-btn:hover {
+    color: #333;
+}
+
+.upload-new-btn {
+    background: #0076be;
+    border-radius: 8px;
+    padding: 10px 24px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: 500;
+}
+
+.upload-new-btn:hover {
+    background: #005d9a;
+}
+
+/* Update Button */
+.update-btn-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    margin-top: 150px;       
+    padding-bottom: 50px;    
+}
+
+.update-btn {
+    background: #0076be;
+    color: white;
+    width: 100%;            
+    max-width: 400px;       
+    padding: 14px;
+    border: none;
+    border-radius: 12px;   
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 118, 190, 0.2); 
+    transition: transform 0.2s ease;
+}
+
+.update-btn:hover {
+    background: #005d9a;
+    transform: translateY(-2px); 
+}
