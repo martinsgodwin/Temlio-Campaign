@@ -1,18 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import './Dashboard.css';
-
 import { 
     Home, 
-    Megaphone, 
-    Users, 
-    Package, 
-    Settings, 
-    Search, 
-    ChevronDown, 
     Zap,
     Phone, 
     Play, 
@@ -21,112 +11,39 @@ import {
     Download, 
     Repeat, 
     Bell, 
-    User,
     Clock,
     MoreVertical, 
-    PhoneOff,     
+    PhoneOff,
+    Megaphone,
+    Search,
+    Package,     
 } from 'lucide-react';
+import Sidebar from './components/Sidebar';
+import Header from './components/Header';
+import './Dashboard.css';
 
 // Icon Components
 const HomeIcon = (props: any) => <Home {...props} size={16} />;
-const CampaignIcon = (props: any) => <Megaphone {...props} size={16} />;
-const CustomerIcon = (props: any) => <Users {...props} size={16} />;
-const OrdersIcon = (props: any) => <Package {...props} size={16} />;
-const SettingsIcon = (props: any) => <Settings {...props} size={16} />;
-const SearchIcon = (props: any) => <Search {...props} size={18} />;
-const ChevronDownIcon = (props: any) => <ChevronDown {...props} size={14} />;
-const UserAvatarIcon = (props: any) => <User {...props} size={24} />;
 const PlayIcon = (props: any) => <Play {...props} size={16} />;
 const MailIcon = (props: any) => <Mail {...props} size={16} />;
 const CallIcon = (props: any) => <Phone {...props} size={16} />; 
 const ImportIcon = (props: any) => <Download {...props} size={16} />; 
 const CreditCardIcon = (props: any) => <CreditCard {...props} size={16} />;
-const RepeatIcon = (props: any) => <Repeat {...props} size={16} />; 
+const RepeatIcon = (props: any) => <Repeat {...props} size={16} />;
+const SearchIcon = (props: any) => <Search {...props} size={18} />;
 const MoreIcon = (props: any) => <MoreVertical {...props} size={16} className="table-menu-icon" />;
 const ZapHeaderIcon = (props: any) => <Zap {...props} size={22} />;
 const MegaphoneHeaderIcon = (props: any) => <Megaphone {...props} size={22} />;
 const ClockHeaderIcon = (props: any) => <Clock {...props} size={22} />;
 
 const Dashboard: React.FC = () => {
-    const pathname = usePathname();
     
     return (
         <div className="dashboard-container">
-            <div className="sidebar-panel">
-                <div className="logo-section">
-                    <img src="/temlio-logo.png" alt="Temlio Logo" className="logo-image" />
-                    <span className="logo-subtext">Temlio Campaign</span>
-                </div>
-
-                <aside className="dashboard-sidebar">
-                    <nav className="sidebar-nav">
-                        <ul>
-                            <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
-                                <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                    <HomeIcon />
-                                    <span>Dashboard</span>
-                                </Link>
-                            </li>
-                            <li className={`nav-item ${pathname === '/campaign' ? 'active' : ''}`}>
-                                <Link href="/campaign" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                    <CampaignIcon />
-                                    <span>Campaign</span>
-                                </Link>
-                            </li>
-                            <li className={`nav-item ${pathname === '/customer-management' ? 'active' : ''}`}>
-                                <Link href="/customer-management" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                    <CustomerIcon />
-                                    <span>Customer Management</span>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <OrdersIcon />
-                                <span>Analysis</span>
-                            </li>
-                            <li className="nav-item">
-                                <SettingsIcon />
-                                <span>Settings</span>
-                            </li>
-                        </ul>
-                    </nav>
-                </aside>
-            </div>
+            <Sidebar />
             
             <div className="main-area">
-                <header className="dashboard-header">
-                    <div className="header-left">
-                        <div className="search-nav">
-                            <SearchIcon />
-                            <input type="text" placeholder="Search for product, name or number" />
-                            <button className="search-secondary-btn"> 
-                                <RepeatIcon />
-                            </button>
-                        </div>
-                    </div>
-
-                    <div className="header-right">
-                        <div className="profile-details-group">
-                            <div className="user-avatar">
-                                <UserAvatarIcon />
-                            </div>
-                            <div className="user-info">
-                                <span className="user-name">Adereeni Stores</span>
-                                <span className="user-email">adeerinistores@oduta.com</span>
-                            </div>
-                            <button className="user-dropdown-btn">
-                                <ChevronDownIcon />
-                            </button>
-                        </div>
-
-                        <div className="credit-action-group">
-                            <div className="user-credit">
-                                <span className="credit-label">Credit Balance</span>
-                                <span className="credit-value">₦20,000.00</span>
-                            </div>
-                            <button className="topup-btn">Top up</button>
-                        </div>
-                    </div>
-                </header>
+                <Header />
 
                 <main className="dashboard-content">
                     <div className="breadcrumbs">

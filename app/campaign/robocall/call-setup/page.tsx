@@ -1,32 +1,25 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import './CallSetup.css';
 import '../Robocall.css';
+import Sidebar from '../../../components/Sidebar';
+import Header from '../../../components/Header';
+import ScheduleModal from '../../../components/ScheduleModal';
 
 import {
-    Home, Megaphone, Users, Package, Settings, Search, ChevronDown,
-    Repeat, User, Upload, Phone, Truck, Mic, Clock, X, Check
+    Users, Upload, Phone, Truck, Mic, Clock, X, Check, ChevronDown
 } from 'lucide-react';
 
 // Icon Components
-const HomeIcon = (props: any) => <Home {...props} size={16} />;
-const CampaignIcon = (props: any) => <Megaphone {...props} size={16} />;
-const CustomerIcon = (props: any) => <Users {...props} size={16} />;
-const OrdersIcon = (props: any) => <Package {...props} size={16} />;
-const SettingsIcon = (props: any) => <Settings {...props} size={16} />;
-const SearchIcon = (props: any) => <Search {...props} size={18} />;
-const ChevronDownIcon = (props: any) => <ChevronDown {...props} size={14} />;
-const UserAvatarIcon = (props: any) => <User {...props} size={24} />;
-const RepeatIcon = (props: any) => <Repeat {...props} size={16} />;
 const UploadIcon = (props: any) => <Upload {...props} size={24} />;
 const MicIcon = (props: any) => <Mic {...props} size={16} />;
 const ClockIcon = (props: any) => <Clock {...props} size={16} />;
 const CloseIcon = (props: any) => <X {...props} size={20} />;
 const CheckIcon = (props: any) => <Check {...props} size={40} />;
+const ChevronDownIcon = (props: any) => <ChevronDown {...props} size={16} />;
 
 // Confetti Component
 const Confetti = () => {
@@ -81,6 +74,7 @@ const CallSetup: React.FC = () => {
     const [recordingTime, setRecordingTime] = React.useState(0);
     const [showInvoiceModal, setShowInvoiceModal] = React.useState(false);
     const [showSuccessModal, setShowSuccessModal] = React.useState(false);
+    const [isScheduleModalOpen, setIsScheduleModalOpen] = React.useState(false);
     const timerRef = React.useRef<NodeJS.Timeout | null>(null);
 
     const toggleRecording = () => {
@@ -100,6 +94,8 @@ const CallSetup: React.FC = () => {
             }, 1000);
         }
     };
+
+    const toggleScheduleModal = () => setIsScheduleModalOpen(!isScheduleModalOpen);
 
     const formatTime = (seconds: number) => {
         const hrs = Math.floor(seconds / 3600);
@@ -145,81 +141,10 @@ const CallSetup: React.FC = () => {
     return (
         <div className="dashboard-container">
             <div className="dashboard-main-content" style={{ display: 'flex', width: '100%' }}>
-                <div className="sidebar-panel">
-                    <div className="logo-section">
-                        <span className="logo-text">Temlio</span>
-                        <span className="logo-subtext">Temlio Campaign</span>
-                    </div>
-                    <aside className="dashboard-sidebar">
-                        <nav className="sidebar-nav">
-                            <ul>
-                                <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
-                                    <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <HomeIcon />
-                                        <span>Dashboard</span>
-                                    </Link>
-                                </li>
-
-                                <li className={`nav-item ${(pathname === '/campaign' || pathname?.includes('/campaign/')) ? 'active' : ''}`}>
-                                    <Link href="/campaign" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CampaignIcon />
-                                        <span>Campaign</span>
-                                    </Link>
-                                </li>
-                                <li className={`nav-item ${pathname === '/customer-management' ? 'active' : ''}`}>
-                                    <Link href="/customer-management" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CustomerIcon />
-                                        <span>Customer Management</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <OrdersIcon />
-                                    <span>Analysis</span>
-                                </li>
-                                <li className="nav-item">
-                                    <SettingsIcon />
-                                    <span>Settings</span>
-                                </li>
-                            </ul>
-                        </nav>
-                    </aside>
-                </div>
+                <Sidebar />
 
                 <div className="main-area">
-                    <header className="dashboard-header">
-                        <div className="header-left">
-                            <div className="search-nav">
-                                <SearchIcon />
-                                <input type="text" placeholder="Search for product, name or number" />
-                                <button className="search-secondary-btn">
-                                    <RepeatIcon />
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="header-right">
-                            <div className="profile-details-group">
-                                <div className="user-avatar">
-                                    <UserAvatarIcon />
-                                </div>
-                                <div className="user-info">
-                                    <span className="user-name">Adereeni Stores</span>
-                                    <span className="user-email">adeerinistores@oduta.com</span>
-                                </div>
-                                <button className="user-dropdown-btn">
-                                    <ChevronDownIcon />
-                                </button>
-                            </div>
-
-                            <div className="credit-action-group">
-                                <div className="user-credit">
-                                    <span className="credit-label">Credit Balance</span>
-                                    <span className="credit-value">₦20,000.00</span>
-                                </div>
-                                <button className="topup-btn">Top up</button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     <main className="dashboard-content">
                         <div className="campaign-setup-header">
@@ -311,7 +236,7 @@ const CallSetup: React.FC = () => {
                             </div>
 
                             <div className="form-actions">
-                                <button className="schedule-btn">Schedule for Later</button>
+                                <button className="schedule-btn" onClick={toggleScheduleModal}>Schedule for Later</button>
                                 <button className="send-btn" onClick={handleSendClick}>Send</button>
                             </div>
                         </section>
@@ -483,6 +408,14 @@ const CallSetup: React.FC = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            <ScheduleModal 
+                isOpen={isScheduleModalOpen} 
+                onClose={toggleScheduleModal}
+                onSchedule={(date, time) => {
+                    console.log(`Call scheduled for ${date} at ${time}`);
+                }}
+            />
         </div>
     );
 };

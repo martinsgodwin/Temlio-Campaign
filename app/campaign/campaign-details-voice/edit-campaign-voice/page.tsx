@@ -1,27 +1,18 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import '../CampaignDetailsVoice.css';
 import './EditCampaignVoice.css';
+import Sidebar from '../../../components/Sidebar';
+import Header from '../../../components/Header';
 
 import {
-    Home, Megaphone, Users, Package, Settings, Search, ChevronDown,
-    User, Repeat, Phone, MoreVertical, CheckCircle, Mic
+    Phone, MoreVertical, CheckCircle, Mic, ChevronDown, Users, Package, Repeat
 } from 'lucide-react';
 
 // Icon Components
-const HomeIcon = (props: any) => <Home {...props} size={16} />;
-const CampaignIcon = (props: any) => <Megaphone {...props} size={16} />;
-const CustomerIcon = (props: any) => <Users {...props} size={16} />;
-const OrdersIcon = (props: any) => <Package {...props} size={16} />;
-const SettingsIcon = (props: any) => <Settings {...props} size={16} />;
-const SearchIcon = (props: any) => <Search {...props} size={18} />;
-const ChevronDownIcon = (props: any) => <ChevronDown {...props} size={14} />;
-const UserAvatarIcon = (props: any) => <User {...props} size={24} />;
-const RepeatIcon = (props: any) => <Repeat {...props} size={16} />;
-const MenuIcon = (props: any) => <MoreVertical {...props} size={18} />;
+const MenuIcon = (props: any) => <MoreVertical {...props} size={18} />
 
 const EditCampaignVoice: React.FC = () => {
     const pathname = usePathname();
@@ -29,87 +20,11 @@ const EditCampaignVoice: React.FC = () => {
     return (
         <div className="dashboard-container">
             <div style={{ display: 'flex', width: '100%' }}>
-                {/* Sidebar */}
-                <div className="sidebar-panel">
-                    <div className="logo-section">
-                        <span className="logo-text">Temlio</span>
-                        <span className="logo-subtext">Temlio Campaign</span>
-                    </div>
-
-                    <aside className="dashboard-sidebar">
-                        <nav className="sidebar-nav">
-                            <ul>
-                                <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
-                                    <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <HomeIcon />
-                                        <span>Dashboard</span>
-                                    </Link>
-                                </li>
-                                <li className={`nav-item ${pathname === '/campaign' || pathname.startsWith('/campaign/') ? 'active' : ''}`}>
-                                    <Link href="/campaign" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CampaignIcon />
-                                        <span>Campaign</span>
-                                    </Link>
-                                </li>
-                                <li className={`nav-item ${pathname === '/customer-management' ? 'active' : ''}`}>
-                                    <Link href="/customer-management" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CustomerIcon />
-                                        <span>Customer Management</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <OrdersIcon />
-                                    <span>Analysis</span>
-                                </li>
-                                <li className="nav-item">
-                                    <SettingsIcon />
-                                    <span>Settings</span>
-                                </li>
-                            </ul>
-                        </nav>
-                    </aside>
-                </div>
+                <Sidebar />
 
                 {/* Main Area */}
                 <div className="main-area">
-                    {/* Header */}
-                    <header className="dashboard-header">
-                        <div className="header-left">
-                            <div className="search-nav">
-                                <SearchIcon />
-                                <input type="text" placeholder="Search for product, name or number" />
-                                <button className="search-menu-btn">
-                                    <MenuIcon />
-                                </button>
-                                <button className="search-secondary-btn">
-                                    <RepeatIcon />
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="header-right">
-                            <div className="profile-details-group">
-                                <div className="user-avatar">
-                                    <UserAvatarIcon />
-                                </div>
-                                <div className="user-info">
-                                    <span className="user-name">Adereeni Stores</span>
-                                    <span className="user-email">adeerinistores@oduta.com</span>
-                                </div>
-                                <button className="user-dropdown-btn">
-                                    <ChevronDownIcon />
-                                </button>
-                            </div>
-
-                            <div className="credit-action-group">
-                                <div className="user-credit">
-                                    <span className="credit-label">Credit Balance</span>
-                                    <span className="credit-value">₦20,000.00</span>
-                                </div>
-                                <button className="topup-btn">Top up</button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     {/* Main Content */}
                     <main className="dashboard-content">

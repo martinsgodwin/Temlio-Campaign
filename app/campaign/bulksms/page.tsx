@@ -1,31 +1,24 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Bulksms.css';
+import Sidebar from '../../components/Sidebar';
+import Header from '../../components/Header';
+import ScheduleModal from '../../components/ScheduleModal';
 
 import { 
-    Home, Megaphone, Users, Package, Settings, Search, ChevronDown, 
-    Repeat, User, Plus, Upload, X, FileText, Check
+    Plus, Upload, X, FileText, Check, ChevronDown, Home
 } from 'lucide-react';
 
 // Icon Components
-const HomeIcon = (props: any) => <Home {...props} size={16} />;
-const CampaignIcon = (props: any) => <Megaphone {...props} size={16} />;
-const CustomerIcon = (props: any) => <Users {...props} size={16} />;
-const OrdersIcon = (props: any) => <Package {...props} size={16} />;
-const SettingsIcon = (props: any) => <Settings {...props} size={16} />;
-const SearchIcon = (props: any) => <Search {...props} size={18} />;
-const ChevronDownIcon = (props: any) => <ChevronDown {...props} size={14} />;
-const UserAvatarIcon = (props: any) => <User {...props} size={24} />;
-const RepeatIcon = (props: any) => <Repeat {...props} size={16} />;
 const PlusIcon = (props: any) => <Plus {...props} size={16} />;
 const UploadIcon = (props: any) => <Upload {...props} size={24} />;
 const FileTextIcon = (props: any) => <FileText {...props} size={28} />;
 const CloseIcon = (props: any) => <X {...props} size={20} />;
 const CheckIcon = (props: any) => <Check {...props} size={40} />;
+const HomeIcon = (props: any) => <Home {...props} size={16} />;
 
 // Confetti Component
 const Confetti = () => {
@@ -113,7 +106,7 @@ const Bulksms: React.FC = () => {
     };
 
     return (
-        <div className={`dashboard-container ${(isModalOpen || isScheduleModalOpen || isPriceBreakdownOpen || showSuccessModal) ? 'modal-open' : ''}`}>
+        <div className={`dashboard-container ${(isModalOpen || isPriceBreakdownOpen || showSuccessModal) ? 'modal-open' : ''}`}>
             {isModalOpen && (
                 <div className="modal-overlay" onClick={toggleModal}>
                     <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -146,35 +139,13 @@ const Bulksms: React.FC = () => {
                 </div>
             )}
 
-            {isScheduleModalOpen && (
-                <div className="modal-overlay" onClick={toggleScheduleModal}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button className="close-modal" onClick={toggleScheduleModal}>
-                            <X size={20} />
-                        </button>
-                        <h3>Schedule Message</h3>
-                        <p>Choose the date and time for sending your message</p>
-                        
-                        <div className="modal-field">
-                            <label>Date</label>
-                            <input 
-                                type="date" 
-                                className="modal-input" 
-                            />
-                        </div>
-                        
-                        <div className="modal-field">
-                            <label>Time</label>
-                            <input 
-                                type="time" 
-                                className="modal-input" 
-                            />
-                        </div>
-                        
-                        <button className="save-btn">Schedule</button>
-                    </div>
-                </div>
-            )}
+            <ScheduleModal 
+                isOpen={isScheduleModalOpen} 
+                onClose={toggleScheduleModal}
+                onSchedule={(date, time) => {
+                    console.log(`Message scheduled for ${date} at ${time}`);
+                }}
+            />
 
             {/* Price Breakdown Modal */}
             <AnimatePresence>
@@ -339,81 +310,10 @@ const Bulksms: React.FC = () => {
             </AnimatePresence>
 
             <div className="dashboard-main-content" style={{ display: 'flex', width: '100%' }}>
-                <div className="sidebar-panel">
-                    <div className="logo-section">
-                        <span className="logo-text">Temlio</span>
-                        <span className="logo-subtext">Temlio Campaign</span>
-                    </div>
-
-                    <aside className="dashboard-sidebar">
-                        <nav className="sidebar-nav">
-                            <ul>
-                                <li className={`nav-item ${pathname === '/' ? 'active' : ''}`}>
-                                    <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <HomeIcon />
-                                        <span>Dashboard</span>
-                                    </Link>
-                                </li>
-                                <li className={`nav-item ${(pathname === '/campaign' || pathname === '/campaign/bulksms') ? 'active' : ''}`}>
-                                    <Link href="/campaign" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CampaignIcon />
-                                        <span>Campaign</span>
-                                    </Link>
-                                </li>
-                                <li className={`nav-item ${pathname === '/customer-management' ? 'active' : ''}`}>
-                                    <Link href="/customer-management" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'inherit' }}>
-                                        <CustomerIcon />
-                                        <span>Customer Management</span>
-                                    </Link>
-                                </li>
-                                <li className="nav-item">
-                                    <OrdersIcon />
-                                    <span>Analysis</span>
-                                </li>
-                                <li className="nav-item">
-                                    <SettingsIcon />
-                                    <span>Settings</span>
-                                </li>
-                            </ul>
-                        </nav>
-                    </aside>
-                </div>
+                <Sidebar />
                 
                 <div className="main-area">
-                    <header className="dashboard-header">
-                        <div className="header-left">
-                            <div className="search-nav">
-                                <SearchIcon />
-                                <input type="text" placeholder="Search for product, name or number" />
-                                <button className="search-secondary-btn"> 
-                                    <RepeatIcon />
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="header-right">
-                            <div className="profile-details-group">
-                                <div className="user-avatar">
-                                    <UserAvatarIcon />
-                                </div>
-                                <div className="user-info">
-                                    <span className="user-name">Adereeni Stores</span>
-                                    <span className="user-email">adeerinistores@oduta.com</span>
-                                </div>
-                                <button className="user-dropdown-btn">
-                                    <ChevronDownIcon />
-                                </button>
-                            </div>
-
-                            <div className="credit-action-group">
-                                <div className="user-credit">
-                                    <span className="credit-label">Credit Balance</span>
-                                    <span className="credit-value">₦20,000.00</span>
-                                </div>
-                                <button className="topup-btn">Top up</button>
-                            </div>
-                        </div>
-                    </header>
+                    <Header />
 
                     <main className="dashboard-content">
                         <div className="breadcrumbs">
