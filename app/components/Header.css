@@ -25,6 +25,10 @@
     width: 350px;
 }
 
+.search-nav svg {
+    color: #000;
+}
+
 .search-nav .icon {
     color: #999;
 }
