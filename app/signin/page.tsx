@@ -39,7 +39,7 @@ export default function SignUpPage() {
             {/* Header */}
             <div className="mb-6">
               <h2 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "Poppins" }}>
-                Create an Account
+                {activeTab === "signin" ? "Login" : "Create an Account"}
               </h2>
               <p className="text-sm text-gray-600">
                 Lorem ipsum dolor sit amet consectetur. Blanditiis missae nisl mi voluptat adipiscing proin nulla quis.
@@ -196,10 +196,10 @@ export default function SignUpPage() {
 
             {/* Footer */}
             <div className="text-center text-sm text-gray-600">
-              Already have an account?{" "}
-              <button className="text-blue-600 hover:underline font-medium"
-              onClick={() => setActiveTab("signin")}
-              >Log In</button>
+              {activeTab === "signin" 
+                ? <>Don't have an account?{" "}<button className="text-blue-600 hover:underline font-medium" onClick={() => setActiveTab("signup")}>Sign Up</button></>
+                : <>Already have an account?{" "}<button className="text-blue-600 hover:underline font-medium" onClick={() => setActiveTab("signin")}>Log In</button></>
+              }
             </div>
           </div>
         </div>
